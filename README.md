@@ -1,5 +1,8 @@
 # Discord Modulated Helpers
 
+
+
+
 | Class | Corresponding |
 | ------- | ------- |
 | TextSelectBox | StringSelectMenuBuilder, StringSelectMenuOptionBuilder | 
@@ -7,6 +10,18 @@
 | Button | ButtonBuilder, ButtonStyle |
 | ButtonAction | Collector Action | 
 | Modal | ModalBuilder, TextInputBuilder, TextInputStyle  | 
+
+### Set up:
+```js
+// common
+const { methods } = require('./helpers/index')
+
+// module
+import { methods } from './helpers/index.js'
+
+// example (use methods)
+const { Modal }
+```
 
 ### TextSelectBox Example:
 ```js
@@ -82,4 +97,12 @@ const built = modal.build()
 interaction.showModal(built)
 // oth
 interaction.showModal(modal.build())
+```
+
+### Bot Setup:
+To enter bot settings, create an .env file, there is an example ` .env ` file named **.env-example** in the project.
+
+```
+TOKEN = 
+BOT_ID = 
 ```

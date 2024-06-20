@@ -38,6 +38,16 @@ for (const file of eventFiles) {
 	}
 }
 
+
+client.on('interactionCreate', async (interaction)=>{
+    if(interaction.customId=="burclar"){
+        console.log("burç: ", interaction.values[0])
+        if(interaction.values[0] == "terazi"){
+            await interaction.reply('terazi seçildi')
+        }
+    }
+})
+
 client.login(process.env.TOKEN)
 .then(() =>console.log("Token başarılı"))
 .catch((err) => console.log("Hata: ", err))

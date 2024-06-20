@@ -45,13 +45,6 @@ class ButtonAction {
 }
 
 class ModalAction {
-    constructor(interaction){
-        this.interaction = interaction
-    }
-
-    getValue(value){
-        return this.interaction.fields.getTextInputValue(value)
-    }
     
     async on(func){
         await client.on('interactionCreate', async interaction => {

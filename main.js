@@ -38,6 +38,16 @@ for (const file of eventFiles) {
 	}
 }
 
+const { ModalAction } = require('./helpers/crumbs')
+const modalAction = new ModalAction()
+
+modalAction.on(async (interaction)=>{
+	if(interaction.customId == "userform" || interaction.customId == "username"){
+		return await interaction.reply('Başarılı')
+	}
+})
+
+/*
 client.on('interactionCreate', async (interaction)=>{
     if(interaction.customId=="burclar"){
         console.log("burç: ", interaction.values[0])
@@ -46,6 +56,7 @@ client.on('interactionCreate', async (interaction)=>{
         }
     }
 })
+*/
 
 client.login(process.env.TOKEN)
 .then(() =>console.log("Token başarılı"))

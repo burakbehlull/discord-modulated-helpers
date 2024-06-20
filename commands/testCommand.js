@@ -5,7 +5,10 @@ module.exports = {
 		.setName('testcommand')
 		.setDescription('Komutları test eder'),
 	async execute(interaction) {
-		// BOŞ
+		
+		const modal = new Modal('userform', 'User Form')
+		modal.add('username', 'Kullanıcı adı: ')
+		await interaction.showModal(modal.build())
 	},
 
 	

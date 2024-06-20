@@ -7,6 +7,8 @@
 | Button | ButtonBuilder, ButtonStyle |
 | ButtonAction | Collector Action | 
 | Modal | ModalBuilder, TextInputBuilder, TextInputStyle  | 
+| ModalAction | interactionCreate and isModalSubmit Action | 
+| MessageSender | EmbedBuilder | 
 
 ### Set up:
 ```js
@@ -94,6 +96,24 @@ const built = modal.build()
 interaction.showModal(built)
 // oth
 interaction.showModal(modal.build())
+```
+
+### ModalAction Example:
+```js
+
+new ModalAction(interaction or client)
+.on(async(interaction)=> {})
+.getValue('value')
+
+// Real Example
+const modalAction = new ModalAction(interaction)
+
+modalAction.on(async(interaction)=>{
+	if(interaction.customId == "userform"){
+		const username = modalAction.getValue('username')
+	}
+})
+
 ```
 
 ### Bot Setup:

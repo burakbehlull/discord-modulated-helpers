@@ -6,7 +6,6 @@ class MessageSender {
         this.client = client
 
     }
-
     embed(title, color=0x0099FF, footer){
         const guild = this.client;
         const IFooter = footer ?? { text: guild.user.displayName, iconURL: guild.user.avatarURL()}

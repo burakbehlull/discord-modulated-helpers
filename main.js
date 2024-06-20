@@ -38,7 +38,6 @@ for (const file of eventFiles) {
 	}
 }
 
-
 client.on('interactionCreate', async (interaction)=>{
     if(interaction.customId=="burclar"){
         console.log("burç: ", interaction.values[0])

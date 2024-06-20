@@ -10,21 +10,18 @@ class TextSelectBox {
         .setCustomId(this.customId)
         .setPlaceholder(this.placeholder)
     }
-    optionComponent(label, description, value, boxDefault, emoji){
+    optionComponent(label, value, description, boxDefault, emoji){
         const option = new StringSelectMenuOptionBuilder()
         .setLabel(label)
-        .setDescription(description)
         .setValue(value)
-        if(emoji){
-            option.setEmoji(emoji)
-        } 
-        if(boxDefault){
-            option.setDefault(boxDefault)
-        }
+        if(description) option.setDescription(boxDefault)
+        if(emoji) option.setEmoji(emoji)
+        if(boxDefault) option.setDefault(boxDefault)
+        
         return option
     }
-    add(label, description, value, boxDefault, emoji){
-        this.options.push(this.optionComponent(label, description, value, boxDefault, emoji))
+    add(label, value, description, boxDefault, emoji){
+        this.options.push(this.optionComponent(label, value, description, boxDefault, emoji))
     }
     box(){
         return this.select.addOptions(...this.options)

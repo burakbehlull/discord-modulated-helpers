@@ -9,11 +9,8 @@ module.exports = {
 		.setName('testcommand')
 		.setDescription('Komutları test eder'),
 	async execute(interaction) {
-		const modal = new Modal('xd', 'Hello')
-		modal.add('ad', 'Adı')
-		
-		return await interaction.showModal(modal.build())
 
+		// BOŞ
 	},
 
 	

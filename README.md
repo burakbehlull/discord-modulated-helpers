@@ -1,8 +1,5 @@
 # Discord Modulated Helpers
 
-
-
-
 | Class | Corresponding |
 | ------- | ------- |
 | TextSelectBox | StringSelectMenuBuilder, StringSelectMenuOptionBuilder | 

@@ -6,6 +6,7 @@
 | UserSelectBox | UserSelectMenuBuilder | 
 | Button | ButtonBuilder, ButtonStyle |
 | ButtonAction | Collector Action | 
+| Modal | ModalBuilder, TextInputBuilder, TextInputStyle  | 
 
 ### TextSelectBox Example:
 ```js
@@ -55,4 +56,30 @@ action.on(async (interaction)=>{
     }
 })
 action.end(async (interaction)=>{})
+```
+
+### Modal Example:
+```js
+
+new Modal(customId, title)
+
+default: customId, label
+.add(customId, label)
+
+// other
+.add(customId, label, value, {paragraph, required, placeholder, max, min})
+
+// example
+const modal = new Modal('user', 'User İnformation')
+
+modal.add('firstname', 'First Name')
+modal.add('lastname', 'Last Name')
+
+// ready
+const built = modal.build()
+
+
+interaction.showModal(built)
+// oth
+interaction.showModal(modal.build())
 ```

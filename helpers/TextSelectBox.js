@@ -27,7 +27,6 @@ class TextSelectBox {
         this.options.push(this.optionComponent(label, description, value, boxDefault, emoji))
     }
     box(){
-        console.log(this.options)
         return this.select.addOptions(...this.options)
     }
 }

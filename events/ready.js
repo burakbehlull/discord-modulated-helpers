@@ -9,11 +9,12 @@ module.exports = {
 		client.user.setPresence({
 			activities: [
 				{
-					name: `${songs[randomIndex]}`,
+					name: "Latosx - Nerdesin",
 					type: ActivityType.Listening
 				}
 			],
-			status: "dnd"
+			status: "dnd",
+			shardId: 0
 		})
 	},
 }

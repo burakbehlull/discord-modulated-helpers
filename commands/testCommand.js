@@ -1,5 +1,5 @@
-const { SlashCommandBuilder, ActionRowBuilder } = require('discord.js');
-const { TextSelectBox } = require('../helpers/index')
+const { SlashCommandBuilder, ActionRowBuilder, UserSelectMenuBuilder } = require('discord.js');
+const { TextSelectBox,UserSelectBox } = require('../helpers/index')
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('testcommand')
@@ -11,8 +11,11 @@ module.exports = {
 	textbox.add('Kova', 'Kova burcunu seçersiniz', 'kova')
 	const select = textbox.box()
 
+	const x = new UserSelectBox('chooseuser', 'aciklama').box()
+
+
 	const row = new ActionRowBuilder()
-		.addComponents(select);
+		.addComponents(x);
 
 	await interaction.reply({
 		content: 'Seçiniz.',

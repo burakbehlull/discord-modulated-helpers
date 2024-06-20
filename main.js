@@ -4,9 +4,9 @@ const path = require('node:path')
 require('dotenv').config()
 
 
-const client = new Client({
+const client = (global.client = new Client({
     intents: Object.keys(GatewayIntentBits).map((intent) => GatewayIntentBits[intent]),
-})
+}))
 
 client.commands = new Collection()
 

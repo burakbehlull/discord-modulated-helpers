@@ -24,7 +24,28 @@ class UserSelectBox {
     }
 }
 
+class ButtonAction {
+    constructor(interaction){
+        this.interaction = interaction
+        const filter = i => i.user.id === this.interaction.user.id
+        this.collector = this.interaction.channel.createMessageComponentCollector({ filter, time: 60000 })
+    }
+    async on(func){
+		await this.collector.on('collect', async interaction => {
+            await func(interaction)
+        })
+        return;
+    }
+    async end(func){
+        this.collector.on('end', async collected => {
+            await func(collected)
+        })
+        return
+    }
+}
+
 module.exports = {
-    UserSelectBox
+    UserSelectBox,
+    ButtonAction
 }
 

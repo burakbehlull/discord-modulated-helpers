@@ -101,16 +101,15 @@ interaction.showModal(modal.build())
 ### ModalAction Example:
 ```js
 
-new ModalAction(interaction or client)
+new ModalAction()
 .on(async(interaction)=> {})
-.getValue('value')
 
 // Real Example
-const modalAction = new ModalAction(interaction)
+const modalAction = new ModalAction()
 
 modalAction.on(async(interaction)=>{
 	if(interaction.customId == "userform"){
-		const username = modalAction.getValue('username')
+		// codes
 	}
 })
 

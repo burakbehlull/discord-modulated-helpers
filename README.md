@@ -1,4 +1,4 @@
-# Discord Modulated Helpers
+# D iscordjs Helper Pack
 
 | Class | Corresponding |
 | ------- | ------- |
@@ -13,10 +13,10 @@
 ### Set up:
 ```js
 // common
-const { methods } = require('./helpers/index')
+const { Methods } = require('./helpers/index')
 
 // module
-import { methods } from './helpers/index.js'
+import { Methods } from './helpers/index.js'
 
 // example (use methods)
 const { Modal }

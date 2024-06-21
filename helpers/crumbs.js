@@ -1,9 +1,7 @@
 const { UserSelectMenuBuilder } = require("discord.js");
-const chalk = require("chalk");
 class crumbs {
     // init
 }
-
 class UserSelectBox {
     constructor(id, placeholder, max, min, disabled,setUsers,addUsers){
         if(!id || !placeholder) return
@@ -56,35 +54,9 @@ class ModalAction {
     }
 }
 
-
-class Logger {
-    constructor(){
-        this.estate = chalk
-        this.log = console.log
-    }
-    success(text){
-        if(!text) return text
-        this.log(chalk.bgGreen.white("[SUCCESS]: "+text+ " ")) 
-    }
-    error(text){
-        if(!text) return text
-        this.log(chalk.bgRed.white("[ERROR]: "+text+ " ")) 
-    }
-    warn(text){
-        if(!text) return text
-        this.log(chalk.bgYellow.black("[WARN]: "+text+ " ")) 
-    }
-    debug(text){
-        if(!text) return text
-        this.log(chalk.bgGray.black("[DEBUG]: "+text+ " ")) 
-    }
-}
-
 module.exports = {
     UserSelectBox,
     ButtonAction,
-    ModalAction,
-	
-	Logger
+    ModalAction
 }
 

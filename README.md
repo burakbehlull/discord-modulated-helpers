@@ -11,7 +11,7 @@ A helper library that shortens the classes and actions in the Discordjs library.
 | Modal | ModalBuilder, TextInputBuilder, TextInputStyle  | 
 | ModalAction | interactionCreate and isModalSubmit Action | 
 | MessageSender | EmbedBuilder | 
-| Logger | Chalk, Console.log | 
+| Tools | **configuration** -> Commands file, Events file and isChatInputCommand() **ItentsAll**-> Receives all intents | 
 
 ### Set up:
 ```js
@@ -115,21 +115,26 @@ modalAction.on(async(interaction)=>{
 
 ```
 
-### Logger Example:
+### Tools /Configuration Example:
 ```js
-const logger = new Logger()
-logger.success()
-logger.error()
-logger.warn()
-logger.debug()
+const { Configuration } = new Tools()
 
-logger.success("command loaded") // output: "[SUCCESS]: command loaded" (The background is green and the text color is white. )
+configuration({
+	// ncessary information
+	client: client,
+	dirname: __dirname,
+
+	commandsFileName: 'commands', // commands file
+	eventsFileName: 'events', // events file
+	chatInputCommand: true // command interaction
+})
 ```
 
-### Bot Setup:
-To enter bot settings, create an .env file, there is an example ` .env ` file named **.env-example** in the project.
+### Tools Examples:
+```js
+const { ItentsAll } = new Tools()
 
-```
-TOKEN = 
-BOT_ID = 
+new Client({
+	intents: ItentsAll()
+})
 ```

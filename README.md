@@ -24,6 +24,8 @@ import { Modalü, Button } from './helpers/index.js'
 
 ### TextSelectBox Example:
 ```js
+const { ActionRow } = require('discord-helper-pack')
+
 # customId, title
 const textbox = new TextSelectBox('burclar','burçlar')
 
@@ -33,9 +35,8 @@ textbox.add('Kova', 'kova', 'Kova burcunu seçersiniz')
 
 const select = textbox.box()
 
-// outside the library action
-const row = new ActionRowBuilder()
-	.addComponents(select);
+// irrelevant
+ActionRow(select)
 ```
 
 ### UserSelectBox Example:
@@ -115,12 +116,21 @@ modalAction.on(async(interaction)=>{
 
 ```
 
+### ActionRow Examples:
+```js
+const { ActionRow } = require('discord-helper-pack')
+
+ActionRow(components)
+
+ActionRow(btn1, btn2, btn3)
+```
+
 ### Tools /Configuration Example:
 ```js
 const { Configuration } = new Tools()
 
 configuration({
-	// ncessary information
+	// incessary information
 	client: client,
 	dirname: __dirname,
 

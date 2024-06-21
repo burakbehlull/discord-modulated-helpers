@@ -1,15 +1,14 @@
-const { ActivityType, Client, Collection, GatewayIntentBits } = require('discord.js')
+const { Client } = require('discord.js')
 const fs = require('node:fs')
 const path = require('node:path')
 require('dotenv').config()
 
 const { Tools } = require('./helpers/index')
 const { ItentsAll, configuration } = new Tools()
+
 const client = (global.client = new Client({
     intents: ItentsAll()
 }))
-
-client.commands = new Collection()
 
 configuration({
 	client: client,

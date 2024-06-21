@@ -1,4 +1,4 @@
-const { UserSelectMenuBuilder } = require("discord.js");
+const { UserSelectMenuBuilder, ActionRowBuilder } = require("discord.js");
 class crumbs {
     // init
 }
@@ -54,9 +54,17 @@ class ModalAction {
     }
 }
 
+async function ActionRow(...childrens){
+    const rows = childrens.map((component) =>
+        new ActionRowBuilder().addComponents(component),
+    )
+    return rows
+}
+
 module.exports = {
     UserSelectBox,
     ButtonAction,
-    ModalAction
+    ModalAction,
+    ActionRow
 }
 

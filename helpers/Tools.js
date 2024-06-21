@@ -1,4 +1,4 @@
-const { GatewayIntentBits, ActivityType } = require('discord.js');
+const { GatewayIntentBits, ActivityType, Collection } = require('discord.js');
 const path = require('path');
 const fs = require('fs');
 class Tools {
@@ -13,22 +13,6 @@ class Tools {
         chatInputCommand=false
     }){
         if(!dirname) return console.log('[ERROR]: dirname is undefined')
-        if(commandsFileName){
-            const commandsPath = path.join(dirname, commandsFileName);
-            const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'))
-            
-            for (const file of commandFiles) {
-                const filePath = path.join(commandsPath, file)
-                const command = require(filePath)
-                if ('data' in command && 'execute' in command) {
-                    client.commands.set(command.data.name, command)
-                } else {
-                    console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`)
-                }
-            }
-            console.log(`${commandFiles.length} commands has been loaded.`)
-
-        }
         if(eventsFileName){
             const eventsPath = path.join(dirname, eventsFileName)
             const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'))
@@ -47,8 +31,26 @@ class Tools {
 
             
         }
+        if(!client) return console.log('[ERROR]: in configuration to client is undefined')
+        client.commands = new Collection()
+        if(commandsFileName){
+            const commandsPath = path.join(dirname, commandsFileName);
+            const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'))
+            
+            for (const file of commandFiles) {
+                const filePath = path.join(commandsPath, file)
+                const command = require(filePath)
+                if ('data' in command && 'execute' in command) {
+                    client.commands.set(command.data.name, command)
+                } else {
+                    console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`)
+                }
+            }
+            console.log(`${commandFiles.length} commands has been loaded.`)
+
+        }
+
         if(chatInputCommand){
-            if(!client) return console.log('[ERROR]: in configuration to client is undefined')
             client.on('interactionCreate', async (interaction)=>{
                 if (!interaction.isChatInputCommand()) return;
 

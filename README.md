@@ -12,6 +12,7 @@ A helper library that shortens the classes and actions in the Discordjs library.
 | ModalAction | interactionCreate and isModalSubmit Action | 
 | MessageSender | EmbedBuilder | 
 | Tools | **configuration** -> Commands file, Events file and isChatInputCommand() **ItentsAll**-> Receives all intents | 
+| ActionRow | ActionRowBuilder() and addComponents(), (type: function)  | 
 
 ### Set up:
 ```js
@@ -19,7 +20,7 @@ A helper library that shortens the classes and actions in the Discordjs library.
 const { Modal, Button } = require('./helpers/index')
 
 // module
-import { Modalü, Button } from './helpers/index.js'
+import { Modal, Button } from './helpers/index.js'
 ```
 
 ### TextSelectBox Example:

@@ -1,5 +1,5 @@
 const { UserSelectMenuBuilder, ActionRowBuilder } = require("discord.js");
-class crumbs {
+class Crumbs {
     // init
 }
 class UserSelectBox {
@@ -54,10 +54,8 @@ class ModalAction {
     }
 }
 
-async function ActionRow(...childrens){
-    const rows = childrens.map((component) =>
-        new ActionRowBuilder().addComponents(component),
-    )
+function ActionRow(...childrens){
+    const rows = childrens.map((component) => new ActionRowBuilder().addComponents(component))
     return rows
 }
 

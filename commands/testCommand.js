@@ -1,15 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { Modal } = require('../helpers/index')
-module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('testcommand')
-		.setDescription('Komutları test eder'),
-	async execute(interaction) {
-		
-		const modal = new Modal('userform', 'User Form')
-		modal.add('username', 'Kullanıcı adı: ')
-		await interaction.showModal(modal.build())
-	},
-
-	
-};
+const { Command } = require('../helpers/index') 
+new Command().command.addRoleOption
+module.exports = new Command('testcommand', 'Komutlaru test eder')
+.build(async (interaction)=>{
+	await interaction.reply('oldu')
+})

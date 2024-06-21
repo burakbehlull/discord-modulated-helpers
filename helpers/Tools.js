@@ -2,9 +2,6 @@ const { GatewayIntentBits, ActivityType, Collection } = require('discord.js');
 const path = require('path');
 const fs = require('fs');
 class Tools {
-    ItentsAll(){
-        return Object.keys(GatewayIntentBits).map((intent) => GatewayIntentBits[intent])
-    }
     configuration({
         client=null,
         dirname=undefined,
@@ -69,6 +66,9 @@ class Tools {
                 }
             })
         }
+    }
+    ItentsAll(){
+        return Object.keys(GatewayIntentBits).map((intent) => GatewayIntentBits[intent])
     }
 }
 

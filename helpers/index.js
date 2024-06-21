@@ -4,6 +4,7 @@ const Button = require('./Button')
 const Modal = require('./Modal')
 const MessageSender = require('./MessageSender')
 const Tools = require('./Tools')
+const Command = require('./Command')
 const { UserSelectBox, ButtonAction, 
     ModalAction, ActionRow } = require('./Crumbs')
 
@@ -18,5 +19,6 @@ module.exports = {
     ModalAction,
     MessageSender,
     
-    ActionRow
+    Command,
+    ActionRow,
 }

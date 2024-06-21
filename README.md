@@ -13,14 +13,15 @@ A helper library that shortens the classes and actions in the Discordjs library.
 | MessageSender | EmbedBuilder | 
 | Tools | **configuration** -> Commands file, Events file and isChatInputCommand() **ItentsAll**-> Receives all intents | 
 | ActionRow | ActionRowBuilder() and addComponents(), (type: function)  | 
+| Command | SlashCommandBuilder | 
 
 ### Set up:
 ```js
 // common
-const { Modal, Button } = require('./helpers/index')
+const { Modal, Button } = require('discordjs-helper-pack')
 
 // module
-import { Modal, Button } from './helpers/index.js'
+import { Modal, Button } from 'discordjs-helper-pack'
 ```
 
 ### TextSelectBox Example:
@@ -117,15 +118,6 @@ modalAction.on(async(interaction)=>{
 
 ```
 
-### ActionRow Examples:
-```js
-const { ActionRow } = require('discord-helper-pack')
-
-ActionRow(components)
-
-ActionRow(btn1, btn2, btn3)
-```
-
 ### Tools /Configuration Example:
 ```js
 const { Configuration } = new Tools()
@@ -147,5 +139,29 @@ const { ItentsAll } = new Tools()
 
 new Client({
 	intents: ItentsAll()
+})
+```
+
+### ActionRow Examples:
+```js
+const { ActionRow } = require('discord-helper-pack')
+
+ActionRow(components)
+
+ActionRow(btn1, btn2, btn3)
+```
+
+### Command Examples:
+```js
+const { Command } = require('discordjs-helper-pack') 
+
+const c = new Command(command name, command description)
+c.command.addRoleOption() // SlashCommandBuilder features 
+c.build(async(interaction)=>{}) // function
+
+// example
+module.exports = new Command('command name', 'command description')
+.build(async (interaction)=>{
+	await interaction.reply('oldu')
 })
 ```

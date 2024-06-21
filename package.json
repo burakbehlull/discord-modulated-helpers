@@ -1,5 +1,5 @@
 {
-  "name": "discordjs-helper-pack"
+  "name": "discordjs-helper-pack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,7 @@
   "author": "Burak A. <burakyabgu@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^5.3.0",
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5"
   }

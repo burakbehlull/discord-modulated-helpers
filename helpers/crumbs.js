@@ -1,12 +1,12 @@
 const { UserSelectMenuBuilder } = require("discord.js");
-
+const chalk = require("chalk");
 class crumbs {
     // init
 }
 
-
 class UserSelectBox {
     constructor(id, placeholder, max, min, disabled,setUsers,addUsers){
+        if(!id || !placeholder) return
         this.id = id
         this.placeholder = placeholder
         this.select = new UserSelectMenuBuilder()
@@ -26,6 +26,7 @@ class UserSelectBox {
 
 class ButtonAction {
     constructor(interaction){
+        if(!interaction) return
         this.interaction = interaction
         const filter = i => i.user.id === this.interaction.user.id
         this.collector = this.interaction.channel.createMessageComponentCollector({ filter, time: 60000 })
@@ -44,8 +45,7 @@ class ButtonAction {
     }
 }
 
-class ModalAction {
-    
+class ModalAction {  
     async on(func){
         await client.on('interactionCreate', async interaction => {
             if(interaction.isModalSubmit()){
@@ -56,9 +56,35 @@ class ModalAction {
     }
 }
 
+
+class Logger {
+    constructor(){
+        this.estate = chalk
+        this.log = console.log
+    }
+    success(text){
+        if(!text) return text
+        this.log(chalk.bgGreen.white("[SUCCESS]: "+text+ " ")) 
+    }
+    error(text){
+        if(!text) return text
+        this.log(chalk.bgRed.white("[ERROR]: "+text+ " ")) 
+    }
+    warn(text){
+        if(!text) return text
+        this.log(chalk.bgYellow.black("[WARN]: "+text+ " ")) 
+    }
+    debug(text){
+        if(!text) return text
+        this.log(chalk.bgGray.black("[DEBUG]: "+text+ " ")) 
+    }
+}
+
 module.exports = {
     UserSelectBox,
     ButtonAction,
-    ModalAction
+    ModalAction,
+	
+	Logger
 }
 

@@ -1,4 +1,6 @@
-# D iscordjs Helper Pack
+# Discordjs Helper Pack
+
+A helper library that shortens the classes and actions in the Discordjs library. Documents for installing and using npm are available below. It is an open source library.
 
 | Class | Corresponding |
 | ------- | ------- |
@@ -9,17 +11,15 @@
 | Modal | ModalBuilder, TextInputBuilder, TextInputStyle  | 
 | ModalAction | interactionCreate and isModalSubmit Action | 
 | MessageSender | EmbedBuilder | 
+| Logger | Chalk, Console.log | 
 
 ### Set up:
 ```js
 // common
-const { Methods } = require('./helpers/index')
+const { Modal, Button } = require('./helpers/index')
 
 // module
-import { Methods } from './helpers/index.js'
-
-// example (use methods)
-const { Modal }
+import { Modalü, Button } from './helpers/index.js'
 ```
 
 ### TextSelectBox Example:
@@ -113,6 +113,17 @@ modalAction.on(async(interaction)=>{
 	}
 })
 
+```
+
+### Logger Example:
+```js
+const logger = new Logger()
+logger.success()
+logger.error()
+logger.warn()
+logger.debug()
+
+logger.success("command loaded") // output: "[SUCCESS]: command loaded" (The background is green and the text color is white. )
 ```
 
 ### Bot Setup:

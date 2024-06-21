@@ -1,4 +1,4 @@
-# D iscordjs Helper Pack
+# Discordjs Helper Pack
 
 | Class | Corresponding |
 | ------- | ------- |

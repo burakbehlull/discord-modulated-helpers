@@ -1,5 +1,7 @@
 # Discordjs Helper Pack
 
+A helper library that shortens the classes and actions in the Discordjs library. Documents for installing and using npm are available below. It is an open source library.
+
 | Class | Corresponding |
 | ------- | ------- |
 | TextSelectBox | StringSelectMenuBuilder, StringSelectMenuOptionBuilder | 

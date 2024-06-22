@@ -1,20 +1,16 @@
-const { Events, ActivityType } = require('discord.js');
+const { Event } = require('../helpers/index')
 
-module.exports = {
-	name: Events.ClientReady,
-	once: true,
-	execute(client, ActivityType) {
-		console.log(`${client.user.tag} giriş yaptı!`)
+module.exports = new Event('ready', true).build(async(client, ActivityType)=> {
+	console.log(`${client.user.tag} giriş yaptı!`)
 
-		client.user.setPresence({
-			activities: [
-				{
-					name: "Latosx - Nerdesin",
-					type: ActivityType.Listening
-				}
-			],
-			status: "dnd",
-			shardId: 0
-		})
-	},
-}
+	client.user.setPresence({
+		activities: [
+			{
+				name: "Latosx - Nerdesin",
+				type: ActivityType.Listening
+			}
+		],
+		status: "dnd",
+		shardId: 0
+	})
+})

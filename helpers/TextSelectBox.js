@@ -23,7 +23,7 @@ class TextSelectBox {
     add(label, value, description, boxDefault, emoji){
         this.options.push(this.optionComponent(label, value, description, boxDefault, emoji))
     }
-    box(){
+    build(){
         return this.select.addOptions(...this.options)
     }
 }

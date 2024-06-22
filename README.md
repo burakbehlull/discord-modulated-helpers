@@ -4,16 +4,18 @@ A helper library that shortens the classes and actions in the Discordjs library.
 
 | Class | Corresponding |
 | ------- | ------- |
-| TextSelectBox | StringSelectMenuBuilder, StringSelectMenuOptionBuilder | 
-| UserSelectBox | UserSelectMenuBuilder | 
-| Button | ButtonBuilder, ButtonStyle |
-| ButtonAction | Collector Action | 
-| Modal | ModalBuilder, TextInputBuilder, TextInputStyle  | 
-| ModalAction | interactionCreate and isModalSubmit Action | 
-| MessageSender | EmbedBuilder | 
-| Tools | **configuration** -> Commands file, Events file and isChatInputCommand() **ItentsAll**-> Receives all intents | 
-| ActionRow | ActionRowBuilder() and addComponents(), (type: function)  | 
-| Command | SlashCommandBuilder | 
+| **TextSelectBox** | StringSelectMenuBuilder, StringSelectMenuOptionBuilder | 
+| **UserSelectBox** | UserSelectMenuBuilder | 
+| **Button** | ButtonBuilder, ButtonStyle |
+| **ButtonAction** | Collector Action | 
+| **Modal** | ModalBuilder, TextInputBuilder, TextInputStyle  | 
+| **ModalAction** | interactionCreate and isModalSubmit Action | 
+| **MessageSender** | EmbedBuilder | 
+| **Tools** | **ItentsAll**-> Receives all intents | 
+| **Configuration** | Commands file, Events file and isChatInputCommand() - (type: function) | 
+| **ActionRow** | ActionRowBuilder() and addComponents() -  (type: function)  | 
+| **Command** | SlashCommandBuilder | 
+| **Event** | Event action | 
 
 ### Set up:
 ```js
@@ -26,16 +28,18 @@ import { Modal, Button } from 'discordjs-helper-pack'
 
 ### TextSelectBox Example:
 ```js
+const { TextSelectBox } = require('discordjs-helper-pack')
+
 const { ActionRow } = require('discord-helper-pack')
 
 # customId, title
-const textbox = new TextSelectBox('burclar','burçlar')
+const textbox = new TextSelectBox('horoscope','Horoscope')
 
 default: label, value
 textbox.add(label, value, description, boxDefault, emoji)
-textbox.add('Kova', 'kova', 'Kova burcunu seçersiniz')
+textbox.add('Aquarius', 'aquarius', 'choose Aquarius')
 
-const select = textbox.box()
+const select = textbox.build()
 
 // irrelevant
 ActionRow(select)
@@ -43,13 +47,17 @@ ActionRow(select)
 
 ### UserSelectBox Example:
 ```js
+const { UserSelectBox } = require('discordjs-helper-pack')
+
 default: customId, description
-const select = new UserSelectBox(customId, description).box()
-const select = new UserSelectBox(customId, placeholder, max, min, disabled,setUsers,addUsers).box()
+const select = new UserSelectBox(customId, description).build()
+const select = new UserSelectBox(customId, placeholder, max, min, disabled,setUsers,addUsers).build()
 ```
 
 ### Button Example:
 ```js
+const { Button } = require('discordjs-helper-pack')
+
 default value: customId, label
 new Button('btn1', 'Button One')
 new Button(customId, label, emoji, disabled)
@@ -66,6 +74,8 @@ new Button('btn1', 'Button One').danger()
 
 ### ButtonAction Example:
 ```js
+const { ButtonAction } = require('discordjs-helper-pack')
+
 const action = new ButtonAction(interaction)
 action.on(async (interaction)=>{
     if(interaction.customId==="btn1"){
@@ -77,6 +87,7 @@ action.end(async (interaction)=>{})
 
 ### Modal Example:
 ```js
+const { Modal } = require('discordjs-helper-pack')
 
 new Modal(customId, title)
 
@@ -103,7 +114,7 @@ interaction.showModal(modal.build())
 
 ### ModalAction Example:
 ```js
-
+const { ModalAction } = require('discordjs-helper-pack') 
 new ModalAction()
 .on(async(interaction)=> {})
 
@@ -118,11 +129,11 @@ modalAction.on(async(interaction)=>{
 
 ```
 
-### Tools /Configuration Example:
+### Configuration Example:
 ```js
-const { Configuration } = new Tools()
+const { Configuration } = require('discordjs-helper-pack') 
 
-configuration({
+Configuration({
 	// incessary information
 	client: client,
 	dirname: __dirname,
@@ -135,6 +146,7 @@ configuration({
 
 ### Tools Examples:
 ```js
+const { Tools } = require('discordjs-helper-pack') 
 const { ItentsAll } = new Tools()
 
 new Client({
@@ -164,4 +176,15 @@ module.exports = new Command('command name', 'command description')
 .build(async (interaction)=>{
 	await interaction.reply('oldu')
 })
+```
+
+### Event Examples:
+```js
+const { Event } = require('discordjs-helper-pack') 
+
+once: default value = false
+new Event('event name', once?)
+.build(async(client, event)=>{})
+
+new Event('ready', true).build(async(client, event)=>{})
 ```

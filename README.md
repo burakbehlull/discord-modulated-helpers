@@ -12,10 +12,11 @@ A helper library that shortens the classes and actions in the Discordjs library.
 | **ModalAction** | interactionCreate and isModalSubmit Action | 
 | **MessageSender** | EmbedBuilder | 
 | **Tools** | **ItentsAll**-> Receives all intents | 
-| **Configuration** | Commands file, Events file and isChatInputCommand() - (type: function) | 
+| **Configuration** | Commands file,Prefix Commands File, Events file and isChatInputCommand() - (type: function) | 
 | **ActionRow** | ActionRowBuilder() and addComponents() -  (type: function)  | 
 | **Command** | SlashCommandBuilder | 
 | **Event** | Event action | 
+| **Affix** | Prefix Command | 
 
 ### Set up:
 ```js
@@ -141,6 +142,10 @@ Configuration({
 	commandsFileName: 'commands', // commands file
 	eventsFileName: 'events', // events file
 	chatInputCommand: true // command interaction
+
+	//prefix configurations
+    prefix: 'm!',
+    prefixCommandsFileName: 'prefixCommands'
 })
 ```
 
@@ -187,4 +192,21 @@ new Event('event name', once?)
 .build(async(client, event)=>{})
 
 new Event('ready', true).build(async(client, event)=>{})
+```
+
+### Affix Examples:
+```js
+const { Affix } = require('discordjs-helper-pack') 
+
+module.exports = new Affix('Test Command', description?, usage?)
+.build('test', async (message, helper)=>{})
+
+enabled default value: true
+.build(commandName, func, enabled)
+
+// helper features
+.client => client
+.getUser() => message.author.id
+.getArgs() => message.content.split(' ')
+.bot() => message.author.bot
 ```

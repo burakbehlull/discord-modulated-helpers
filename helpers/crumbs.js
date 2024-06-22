@@ -67,7 +67,9 @@ function Configuration({
     dirname=undefined,
     eventsFileName=undefined,
     commandsFileName=undefined,
-    chatInputCommand=false
+    chatInputCommand=false,
+    prefixCommandsFileName=undefined,
+    prefix= undefined
 }){
     if(!dirname) return console.log('[ERROR]: dirname is undefined')
     if(eventsFileName){
@@ -106,7 +108,6 @@ function Configuration({
         console.log(`${commandFiles.length} commands has been loaded.`)
 
     }
-
     if(chatInputCommand){
         client.on('interactionCreate', async (interaction)=>{
             if (!interaction.isChatInputCommand()) return;
@@ -124,6 +125,42 @@ function Configuration({
                 console.error(`Error executing ${interaction.commandName}`);
                 console.error(error);
             }
+        })
+    }
+    if(prefix && prefixCommandsFileName){
+        const commands = []
+
+        fs.readdir(dirname+`/${prefixCommandsFileName}/`, (err, files)=>{
+            files.forEach(f => {
+                let props = require(dirname+`/${prefixCommandsFileName}/${f}`);
+                
+                commands.push(props)
+            })
+        })
+        
+        client.on('messageCreate', async (message)=> {
+            if(message.author.bot) return
+        
+            let input = message.content.split(" ")[0].slice(prefix?.length);
+            let f = commands.find(c => c.command == input)
+            let args = message.content.split(' ')
+            let helpers = {
+                client: client,
+                getArgs: (arg=1)=> {
+                    return args[arg]
+                },
+                getUser: ()=> {
+                    if(args==undefined) return
+                    return message?.author.id
+                },
+                bot: ()=>{
+                    if(args==undefined) return
+                    return message?.author.bot
+                }
+            }
+            if(f?.enabled){
+                await f?.execute(message, helpers)
+            } else return
         })
     }
 }

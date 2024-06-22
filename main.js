@@ -3,19 +3,21 @@ const fs = require('node:fs')
 const path = require('node:path')
 require('dotenv').config()
 
-const { Tools } = require('./helpers/index')
-const { ItentsAll, configuration } = new Tools()
+const { Tools, Configuration } = require('./helpers/index')
 
 const client = (global.client = new Client({
-    intents: ItentsAll()
+    intents: new Tools().ItentsAll()
 }))
 
-configuration({
+Configuration({
 	client: client,
 	dirname: __dirname,
 	commandsFileName: 'commands',
 	eventsFileName: 'events',
-	chatInputCommand: true
+	chatInputCommand: true,
+    
+    prefix: 'm!',
+    prefixCommandsFileName: 'prefixCommands'
 })
 
 

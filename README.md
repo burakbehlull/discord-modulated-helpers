@@ -17,6 +17,7 @@ A helper library that shortens the classes and actions in the Discordjs library.
 | **Command** | SlashCommandBuilder | 
 | **Event** | Event action | 
 | **Affix** | Prefix Command | 
+| **EmojiReact** | messageReaction Event | 
 
 ### Set up:
 ```js
@@ -141,8 +142,8 @@ Configuration({
 
 	commandsFileName: 'commands', // commands file
 	eventsFileName: 'events', // events file
-	chatInputCommand: true // command interaction
-
+	chatInputCommand: true, // command interaction
+	
 	//prefix configurations
     prefix: 'm!',
     prefixCommandsFileName: 'prefixCommands'
@@ -209,4 +210,15 @@ enabled default value: true
 .getUser() => message.author.id
 .getArgs() => message.content.split(' ')
 .bot() => message.author.bot
+```
+
+
+### EmojiReact Example:
+```js
+new EmojiReact(content or embed, channelId, client)
+.build(emoji, addFunc, removeFunc, updateFunc)
+
+// example
+new EmojiReact(content or embed, channelId, client)
+.build('🦁', async(reaction, user)=>{}, async(reaction, user)=>{}, async(reaction, user)=>{})
 ```

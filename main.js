@@ -32,6 +32,7 @@ client.on('interactionCreate', async (interaction)=>{
 })
 */
 
+
 client.login(process.env.TOKEN)
 .then(() =>console.log("Token başarılı"))
 .catch((err) => console.log("Hata: ", err))

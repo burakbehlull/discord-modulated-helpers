@@ -7,6 +7,7 @@ const Tools = require('./Tools')
 const Command = require('./Command')
 const Affix = require('./Affix')
 const Event = require('./Event')
+const EmojiReact = require('./Event')
 const { UserSelectBox, ButtonAction, ModalAction, 
     ActionRow, Configuration } = require('./Crumbs')
 
@@ -24,6 +25,8 @@ module.exports = {
     Command,
     Event,
     Affix,
+    EmojiReact,
+
     ActionRow,
     Configuration,
 }
